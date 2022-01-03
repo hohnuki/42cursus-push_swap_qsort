@@ -1,15 +1,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#define max 5
-
-typedef struct stack
+typedef struct s_stack
 {
-	struct stack *prev;
-	long number;
-	int top;
-	struct stack? *next;
-}	stack;
+	struct s_stack	*prev;
+	int				data;
+	struct s_stack	*next;
+}	t_stack;
 
 #include "stdio.h"
 #include "stdlib.h"
