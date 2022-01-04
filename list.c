@@ -1,95 +1,13 @@
 #include "push_swap.h"
 
-//t_stack	*head = NULL;
-//
-//void	init();
-//void	display(void);
-//void 	release(void);
-//
-//int push(int n)
-//{
-//	t_stack	*s = (t_stack*)malloc(sizeof(t_stack));
-//	if (s == NULL)
-//		return (0);
-//	s->data = n;
-//	s->next = head;
-//	head = s;
-//	return (1);
-//}
-//
-//int main(int argc, char **argv)
-//{
-//	int	i;
-//
-//	i = 1;
-//	init();
-//	while (i < argc)
-//	{
-//		push(atoi(argv[i]));
-//		i++;
-//	}
-//	display();
-//	release();
-//	return (0);
-//}
-//
-//void display(void)
-//{
-//	printf("----\n");
-//	for (t_stack *s = head; s != NULL; s = s->next)
-//		printf("%d\n", s->data);
-//	printf("----\n");
-//}
-//
-//void release(void)
-//{
-//	t_stack	*s = head;
-//
-//	while (s != NULL)
-//	{
-//		t_stack	*tmp = s->next;
-//		free(s);
-//		s = tmp;
-//	}
-//}
-//
-//void init()
-//{
-//	if (head != NULL)
-//		release();
-//	head = NULL;
-//}
-//
-//int pop(int *n)
-//{
-//	t_stack	*s = head;
-//
-//	if (s == NULL)
-//		return 0; // error
-//	head = s->next;
-//	*n = s->data;
-//	free(s);
-//	return 1;  // success
-//}
-//
-//void delete(void)
-//{
-//	int n = 0;
-//	if (pop(&n) == 1)
-//		printf("%d has just deleted \n", n);
-//	else
-//		printf("--- error\n");
-//}
-
-
-t_stack	*ft_lstnew(int number)
+t_stack	*ft_lstnew(int n)
 {
 	t_stack	*ptr;
 
 	ptr = malloc(sizeof(t_stack));
 	if (ptr == NULL)
 		return (NULL);
-	ptr->data = number;
+	ptr->number = n;
 	ptr->next = NULL;
 	return (ptr);
 }
@@ -97,34 +15,50 @@ t_stack	*ft_lstnew(int number)
 int	main(int argc, char **argv)
 {
 	t_stack	*ptr;
+	t_stack	*tmp;
 	t_stack	*start;
-	int		i;
+	t_stack	*end;
+	int	i;
 
+	start = ft_lstnew(0);
+	end = ft_lstnew(0);
 	i = 1;
-	start = ft_lstnew(atoi(argv[i]));
-	i++;
+	start->prev = end;
+	end->next = start;
 	while (i < argc)
 	{
 		ptr = ft_lstnew(atoi(argv[i]));
-//		if (i == argc)
-//			ptr->next = start;
-//		else
-		ptr->next = (t_stack *)argv[i + 1];
-//		if (i == 2)
-//			ptr->prev = start;
-//		else
-//			ptr->prev = (t_stack *)argv[i - 1];
+		if (i == 1)
+			ptr->prev = start;
+		else
+			ptr->prev = tmp;
+		tmp = ptr;
 		i++;
 	}
+	end->prev = tmp;
 
-	i = 1;
-	ptr = sta
-	printf("--------------\n");
-	while (i < argc)
+	while (argc - 1 > 0)
 	{
-		printf("%d \n", ptr->data);
+		if (argc == i)
+			ptr->next = end;
+		else
+			ptr->next = tmp;
+		tmp = ptr;
 		ptr = ptr->prev;
-		i++;
+		argc--;
 	}
-	printf("--------------\n");
+	ptr->next = tmp;
+
+	printf("--------------------\n");
+	for (int i = 0; i < 20; i++)
+	{
+		printf("ptr->number = %d \n", ptr->number);
+		ptr = ptr->next;
+	}
+	printf("--------------------\n");
+	for (int i = 0; i < 20; i++)
+	{
+		printf("ptr->number reverse = %d \n", ptr->number);
+		ptr = ptr->prev;
+	}
 }
