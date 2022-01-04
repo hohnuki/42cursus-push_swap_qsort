@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define N 10
+#define N 20
 int a[N];
 typedef int keytype;
 #define INFINITY_LOOP 1
