@@ -1,64 +1,82 @@
 #include "push_swap.h"
 
-t_stack	*ft_lstnew(int n)
+void	command_sa(t_stack *a)
+{
+	int	tmp;
+	int	tmp_prev;
+
+	tmp = a->number;
+	a = a->prev;
+	tmp_prev = a->number;
+	a->number = tmp;
+	a = a->next;
+	a->number = tmp_prev;
+}
+
+void	command_ra(t_stack *a)
+{
+	int	tmp;
+	int tmp_prev;
+
+	tmp = a->number;
+	a = a->next;
+	a = a->next;
+	tmp_prev = a->number;
+	a->number = tmp;
+	a = a->prev;
+	a = a->prev;
+	a->number = tmp_prev;
+}
+
+t_stack	*ft_lstnew(int num)
 {
 	t_stack	*ptr;
 
 	ptr = malloc(sizeof(t_stack));
 	if (ptr == NULL)
 		return (NULL);
-	ptr->number = n;
+	ptr->number = num;
 	ptr->next = NULL;
-	return (ptr);
+	return ptr;
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*ptr;
+	t_stack	*a;
 	t_stack	*tmp;
 	t_stack	*start;
-	t_stack	*end;
 	int	i;
 
-	start = ft_lstnew(0);
-	end = ft_lstnew(0);
 	i = 1;
-	start->prev = end;
-	end->next = start;
+	start = ft_lstnew(0);
 	while (i < argc)
 	{
-		ptr = ft_lstnew(atoi(argv[i]));
+		a = ft_lstnew(atoi(argv[i]));
 		if (i == 1)
-			ptr->prev = start;
+			start->next = a;
 		else
-			ptr->prev = tmp;
-		tmp = ptr;
+			tmp->next = a;
+		if (i == 1)
+			a->prev = start;
+		else
+			a->prev = tmp;
+		tmp = a;
 		i++;
 	}
-	end->prev = tmp;
+	a->next = start;
+	start->prev = tmp;
 
-	while (argc - 1 > 0)
-	{
-		if (argc == i)
-			ptr->next = end;
-		else
-			ptr->next = tmp;
-		tmp = ptr;
-		ptr = ptr->prev;
-		argc--;
-	}
-	ptr->next = tmp;
-
+//	printf("--------------------\n");
+//	for (int j = 0; j < 10; j++)
+//	{
+//		printf("ptr->number =         %d \n", a->number);
+//		printf("flag = %s \n", a->flag);
+//		a = a->next;
+//	}
 	printf("--------------------\n");
-	for (int i = 0; i < 20; i++)
+	for (int j = 0; j < 10; j++)
 	{
-		printf("ptr->number = %d \n", ptr->number);
-		ptr = ptr->next;
-	}
-	printf("--------------------\n");
-	for (int i = 0; i < 20; i++)
-	{
-		printf("ptr->number reverse = %d \n", ptr->number);
-		ptr = ptr->prev;
+		printf("ptr->number reverse = %d \n", a->number);
+		a = a->prev;
 	}
 }
