@@ -3,7 +3,7 @@
 
 #include "stdio.h"
 #include "stdlib.h"
-#include <string.h>
+#include "string.h"
 
 typedef struct s_stack
 {
@@ -11,5 +11,17 @@ typedef struct s_stack
 	int				number;
 	struct s_stack	*next;
 }	t_stack;
+
+t_stack	*ft_lstnew(int num);
+void	command_sa(t_stack *a);
+void	command_sb(t_stack *b);
+void	command_ss(t_stack *a, t_stack *b);
+void	command_ra(t_stack *a);
+void	command_rb(t_stack *b);
+void	command_rr(t_stack *a, t_stack *b);
+t_stack	*command_rra(t_stack *a);
+t_stack	*command_rrb(t_stack *b);
+t_stack	*command_pb(t_stack *a, t_stack *b);
+
 
 #endif
