@@ -30,29 +30,38 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
+	if ((argc - 1) == 3)
+		a = sort_case_three(a);
 	printf("--------------------\n");
 	for (int j = 0; j < LOOP_SIZE; j++)
 	{
 		printf("a->content =         %s \n", (char *)a->content);
-		a = a->next;
-	}
-	printf("--------------------\n");
-	for (int j = 0; j < LOOP_SIZE; j++)
-	{
-		printf("a->content reverse = %s \n", (char *)a->content);
 		a = a->prev;
 	}
 	printf("--------------------\n");
-	for (int j = 0; j < LOOP_SIZE; j++)
-	{
-		printf("a->content =         %s \n", (char *)b->content);
-		b = b->next;
-	}
-	printf("--------------------\n");
-	for (int j = 0; j < LOOP_SIZE; j++)
-	{
-		printf("a->content reverse = %s \n", (char *)b->content);
-		b = b->prev;
-	}
-	printf("--------------------\n");
+//	printf("--------------------\n");
+//	for (int j = 0; j < LOOP_SIZE; j++)
+//	{
+//		printf("a->content =         %s \n", (char *)a->content);
+//		a = a->next;
+//	}
+//	printf("--------------------\n");
+//	for (int j = 0; j < LOOP_SIZE; j++)
+//	{
+//		printf("a->content reverse = %s \n", (char *)a->content);
+//		a = a->prev;
+//	}
+//	printf("--------------------\n");
+//	for (int j = 0; j < LOOP_SIZE; j++)
+//	{
+//		printf("a->content =         %s \n", (char *)b->content);
+//		b = b->next;
+//	}
+//	printf("--------------------\n");
+//	for (int j = 0; j < LOOP_SIZE; j++)
+//	{
+//		printf("a->content reverse = %s \n", (char *)b->content);
+//		b = b->prev;
+//	}
+//	printf("--------------------\n");
 }

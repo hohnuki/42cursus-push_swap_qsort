@@ -23,6 +23,7 @@ t_stack	*command_rra(t_stack *a);
 t_stack	*command_rrb(t_stack *b);
 t_stack	*command_pa(t_stack *a, t_stack *b);
 t_stack	*command_pb(t_stack *a, t_stack *b);
+t_stack	*sort_case_three(t_stack *a);
 
 
 #endif
