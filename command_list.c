@@ -2,8 +2,8 @@
 
 void	command_sa(t_stack *a)
 {
-	char *tmp;
-	char *tmp_prev;
+	char	*tmp;
+	char	*tmp_prev;
 
 	tmp = a->content;
 	a = a->prev;
@@ -15,8 +15,8 @@ void	command_sa(t_stack *a)
 
 void	command_sb(t_stack *b)
 {
-	char *tmp;
-	char *tmp_prev;
+	char	*tmp;
+	char	*tmp_prev;
 
 	tmp = b->content;
 	b = b->prev;
@@ -34,32 +34,30 @@ void	command_ss(t_stack *a, t_stack *b)
 
 void	command_ra(t_stack *a)
 {
-	char *tmp;
-	char *tmp_prev;
+	char	*tmp;
+	char	*tmp_prev;
 
 	tmp = a->content;
-	a = a->next;
-	a = a->next;
+	a = (a->next)->next;
 	tmp_prev = a->content;
 	a->content = tmp;
-	a = a->prev;
-	a = a->prev;
+	a = (a->prev)->prev;
 	a->content = tmp_prev;
+	command_sa(a);
 }
 
 void	command_rb(t_stack *b)
 {
-	char *tmp;
-	char *tmp_prev;
+	char	*tmp;
+	char	*tmp_prev;
 
 	tmp = b->content;
-	b = b->next;
-	b = b->next;
+	b = (b->next)->next;
 	tmp_prev = b->content;
 	b->content = tmp;
-	b = b->prev;
-	b = b->prev;
+	b = (b->prev)->prev;
 	b->content = tmp_prev;
+	command_sb(b);
 }
 
 void	command_rr(t_stack *a, t_stack *b)
@@ -70,54 +68,32 @@ void	command_rr(t_stack *a, t_stack *b)
 
 t_stack	*command_rra(t_stack *a)//最初(startの次)のスタックをフリーしていない。
 {
-	t_stack	*next_address;
-	t_stack	*prev_address;
-	t_stack	*new;
-	char *tmp;
+	char	*tmp;
+	char	*tmp_prev;
 
-	a = a->next;
-	prev_address = a;
-	a = a->next;
+	command_sa(a);
 	tmp = a->content;
-	a = a->next;
-	next_address = a;
-	a->prev = prev_address;
-	a = a->prev;
-	a->next = next_address;
-	a = a->prev;
-	new = ft_lstnew(tmp);
-	if (new == NULL)
-		return (NULL);
-	a->next = new;
-	new->prev = a;
-	new->next = prev_address;
-	return (new);
+	a = (a->next)->next;
+	tmp_prev = a->content;
+	a->content = tmp;
+	a = (a->prev)->prev;
+	a->content = tmp_prev;
+	return (a);
 }
 
-t_stack	*command_rrb(t_stack *b)//最初(startの次)のスタックをフリーしていない。
+t_stack	*command_rrb(t_stack *b)
 {
-	t_stack	*next_address;
-	t_stack	*prev_address;
-	t_stack	*new;
-	char *tmp;
+	char	*tmp;
+	char	*tmp_prev;
 
-	b = b->next;
-	prev_address = b;
-	b = b->next;
+	command_sa(b);
 	tmp = b->content;
-	b = b->next;
-	next_address = b;
-	b->prev = prev_address;
-	b = b->prev;
-	b->next = next_address;
-	b = b->prev;
-	new = ft_lstnew(tmp);
-	if (new == NULL)
-		return (NULL);
-	b->next = new;
-	new->prev = b;
-	new->next = prev_address;
-	return (new);
+	b = (b->next)->next;
+	tmp_prev = b->content;
+	b->content = tmp;
+	b = (b->prev)->prev;
+	b->content = tmp_prev;
+	return (b);
 }
 
 t_stack	*command_pa(t_stack *a, t_stack *b)
@@ -127,7 +103,7 @@ t_stack	*command_pa(t_stack *a, t_stack *b)
 
 	tmp = b;
 	start_a = a;
-	while(start_a->content != NULL)
+	while (start_a->content != NULL)
 		start_a = start_a->prev;
 	(b->prev)->next = b->next;
 	(b->next)->prev = b->prev;

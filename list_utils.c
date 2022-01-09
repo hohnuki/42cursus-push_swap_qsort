@@ -9,5 +9,5 @@ t_stack	*ft_lstnew(void *content)
 		return (NULL);
 	ptr->content = content;
 	ptr->next = NULL;
-	return ptr;
+	return (ptr);
 }

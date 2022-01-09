@@ -32,6 +32,8 @@ int	main(int argc, char **argv)
 
 	if ((argc - 1) == 3)
 		a = sort_case_three(a);
+	else if ((argc - 1) == 5)
+		a = sort_case_()
 	printf("--------------------\n");
 	for (int j = 0; j < LOOP_SIZE; j++)
 	{
