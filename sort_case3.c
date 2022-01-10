@@ -17,11 +17,11 @@ t_stack	*sort_case_three(t_stack *a)
 		a = command_rra(a);
 	}
 	else if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) < 0 && strcmp(top->content, bottom->content) > 0)
-		command_ra(a);
+		a = command_ra(a);
 	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) < 0)
 	{
 		command_sa(a);
-		command_ra(a);
+		a = command_ra(a);
 	}
 	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) > 0)
 		a = command_rra(a);

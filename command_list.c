@@ -32,32 +32,44 @@ void	command_ss(t_stack *a, t_stack *b)
 	command_sb(b);
 }
 
-void	command_ra(t_stack *a)
+t_stack	*command_ra(t_stack *a)
 {
-	char	*tmp;
-	char	*tmp_prev;
+	char	*tmp_content;
+	t_stack	*free_address;
+	t_stack	*new;
 
-	tmp = a->content;
-	a = (a->next)->next;
-	tmp_prev = a->content;
-	a->content = tmp;
-	a = (a->prev)->prev;
-	a->content = tmp_prev;
-	command_sa(a);
+	tmp_content = a->content;
+	free_address = a;
+	new = ft_lstnew(tmp_content);
+	(a->prev)->next = a->next;
+	(a->next)->prev = a->prev;
+	((a->next)->next)->prev = new;
+	new->next = (a->next)->next;
+	(a->next)->next = new;
+	new->prev = (a->next);
+	a = a->prev;
+	free (free_address);
+	return (a);
 }
 
-void	command_rb(t_stack *b)
+t_stack	*command_rb(t_stack *b)
 {
-	char	*tmp;
-	char	*tmp_prev;
+	char	*tmp_content;
+	t_stack	*free_address;
+	t_stack	*new;
 
-	tmp = b->content;
-	b = (b->next)->next;
-	tmp_prev = b->content;
-	b->content = tmp;
-	b = (b->prev)->prev;
-	b->content = tmp_prev;
-	command_sb(b);
+	tmp_content = b->content;
+	free_address = b;
+	new = ft_lstnew(tmp_content);
+	(b->prev)->next = b->next;
+	(b->next)->prev = b->prev;
+	((b->next)->next)->prev = new;
+	new->next = (b->next)->next;
+	(b->next)->next = new;
+	new->prev = (b->next);
+	b = b->prev;
+	free (free_address);
+	return (b);
 }
 
 void	command_rr(t_stack *a, t_stack *b)
