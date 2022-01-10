@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-# define LOOP_SIZE 8
+#define LOOP_SIZE 8
 
 int	main(int argc, char **argv)
 {
@@ -29,41 +29,28 @@ int	main(int argc, char **argv)
 		}
 		i++;
 	}
-
 	if ((argc - 1) == 3)
 		a = sort_case_three(a);
-//	else if ((argc - 1) == 5)
-//		a = sort_case_()
-	printf("--------------------\n");
-	for (int j = 0; j < LOOP_SIZE; j++)
-	{
-		printf("a->content =         %s \n", (char *)a->content);
-		a = a->prev;
-	}
-	printf("--------------------\n");
-//	printf("--------------------\n");
+	else if ((argc - 1) == 5)
+		a = sort_case_five(a, b);
 //	for (int j = 0; j < LOOP_SIZE; j++)
 //	{
 //		printf("a->content =         %s \n", (char *)a->content);
 //		a = a->next;
 //	}
-//	printf("--------------------\n");
+	for (int j = 0; j < LOOP_SIZE; j++)
+	{
+		printf("a->content reverse = %s \n", (char *)a->content);
+		a = a->prev;
+	}
 //	for (int j = 0; j < LOOP_SIZE; j++)
 //	{
-//		printf("a->content reverse = %s \n", (char *)a->content);
-//		a = a->prev;
-//	}
-//	printf("--------------------\n");
-//	for (int j = 0; j < LOOP_SIZE; j++)
-//	{
-//		printf("a->content =         %s \n", (char *)b->content);
+//		printf("b->content =         %s \n", (char *)b->content);
 //		b = b->next;
 //	}
-//	printf("--------------------\n");
-//	for (int j = 0; j < LOOP_SIZE; j++)
-//	{
-//		printf("a->content reverse = %s \n", (char *)b->content);
-//		b = b->prev;
-//	}
-//	printf("--------------------\n");
+	for (int j = 0; j < LOOP_SIZE; j++)
+	{
+		printf("b->content reverse = %s \n", (char *)b->content);
+		b = b->prev;
+	}
 }

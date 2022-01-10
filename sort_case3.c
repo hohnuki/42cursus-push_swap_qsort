@@ -10,20 +10,20 @@ t_stack	*sort_case_three(t_stack *a)
 	middle = a->prev;
 	bottom = (a->prev)->prev;
 	if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) < 0 && strcmp(top->content, bottom->content) < 0)
-		command_sa(a);
+		cmd_sa(a);
 	else if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) > 0)
 	{
-		command_sa(a);
-		a = command_rra(a);
+		cmd_sa(a);
+		a = cmd_rra(a);
 	}
 	else if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) < 0 && strcmp(top->content, bottom->content) > 0)
-		a = command_ra(a);
+		a = cmd_ra(a);
 	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) < 0)
 	{
-		command_sa(a);
-		a = command_ra(a);
+		cmd_sa(a);
+		a = cmd_ra(a);
 	}
 	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) > 0)
-		a = command_rra(a);
+		a = cmd_rra(a);
 	return (a);
 }
