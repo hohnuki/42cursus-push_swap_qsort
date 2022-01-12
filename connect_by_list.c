@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	else if ((argc - 1) == 5)
 		a = sort_case_five(a, b);
 	else
-		a = sort_case_over_six(a, b);
+		a = sort_case_over_six(a, b, argc);
 	print_stack(a, b);
 	return (0);
 }

@@ -4,7 +4,7 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
-#define LOOP_SIZE 15
+#define LOOP_SIZE 10
 
 typedef struct s_stack
 {
@@ -28,7 +28,6 @@ void	print_stack(t_stack *a, t_stack *b);
 t_stack	*sort_case_two(t_stack *a);
 t_stack	*sort_case_three(t_stack *a);
 t_stack	*sort_case_five(t_stack *a, t_stack *b);
-t_stack	*sort_case_over_six(t_stack *a, t_stack *b);
-
+t_stack	*sort_case_over_six(t_stack *a, t_stack *b, int argc);
 
 #endif
