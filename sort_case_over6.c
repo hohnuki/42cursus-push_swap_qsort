@@ -5,7 +5,7 @@ t_stack	*sort_case_over_six(t_stack *a, t_stack *b)
 
 }
 
-1 2 3 4 5 6 7 8 9 10
+1 2 3 4 5 6 7 8 9 10 aaaaaa
 
 3 4 2 9 5 7 8 6 3 4 A
                     B
