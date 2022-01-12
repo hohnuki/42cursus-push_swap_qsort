@@ -1,6 +1,8 @@
 NAME = pushswap.a
 
-SRCS = command_list.c connect_by_list.c list_utils.c push_swap.c sort_case3.c
+SRCS = command_list.c connect_by_list.c list_utils.c push_swap.c \
+		sort_case2.c sort_case3.c sort_case5.c sort_case_over_six.c \
+		print_stack.c
 OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Werror -Wextra

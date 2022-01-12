@@ -1,4 +1,4 @@
 a.out
 !*.c
 !*.h
-!makefile
+!Makefile
