@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 		a = sort_case_three(a);
 	else if ((argc - 1) == 5)
 		a = sort_case_five(a, b);
+	else if ((argc - 1) == 6)
+		a = sort_case_six(a, b);
 	else
 		a = sort_case_over_six(a, b, argc);
 	print_stack(a, b);

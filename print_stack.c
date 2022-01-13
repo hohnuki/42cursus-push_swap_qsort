@@ -15,12 +15,12 @@ void	print_stack(t_stack *a, t_stack *b)
 	printf("-------------------------------------------------------\n");
 	for (int j = 0; j < LOOP_SIZE; j++)
 	{
-		printf("b->content =         %s \n", (char *)b->content);
-		b = b->next;
+		printf("b->content reverse = %s \n", (char *)b->content);
+		b = b->prev;
 	}
 	for (int j = 0; j < LOOP_SIZE / 2; j++)
 	{
-		printf("b->content reverse = %s \n", (char *)b->content);
-		b = b->prev;
+		printf("b->content =         %s \n", (char *)b->content);
+		b = b->next;
 	}
 }
