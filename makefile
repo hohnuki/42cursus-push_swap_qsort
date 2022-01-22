@@ -1,29 +1,35 @@
-NAME = ps.a
+CC		= gcc
+
+CFLAGS	= -Wall -Wextra -Werror
+
+NAME = push_swap
+
+CHECKER = checker
+
+LIBFT = libft/libft.a
 
 SRCS = command_list.c connect_by_list.c list_utils.c push_swap.c \
 		sort_case2.c sort_case3.c sort_case5.c sort_case6.c \
 		sort_case_over6.c print_stack.c
+
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra
-CC = gcc -c
-RM = rm -f
-AR = ar rcs
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME) : $(LIBFT) $(OBJS)
+		$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS)
+$(LIBFT) :
+		make -C libft
 
 clean :
-	$(RM) $(OBJS)
+		make clean -C libft
+		$(RM) $(OBJS)
+		$(RM) $(OBJS2)
 
 fclean : clean
-	$(RM) $(NAME)
+		$(RM) $(LIBFT)
+		$(RM) $(NAME)
 
 re : fclean all
-
-.PHONY : all clean fclean re

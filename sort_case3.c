@@ -2,28 +2,28 @@
 
 t_stack	*sort_case_three(t_stack *a)
 {
-	t_stack	*top;
-	t_stack	*middle;
-	t_stack	*bottom;
+	int	top;
+	int	middle;
+	int	bottom;
 
-	top = a;
-	middle = a->prev;
-	bottom = (a->prev)->prev;
-	if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) < 0 && strcmp(top->content, bottom->content) < 0)
+	top = atoi(a->content);
+	middle = atoi((a->prev)->content);
+	bottom = atoi(((a->prev)->prev)->content);
+	if (top > middle && bottom > middle && bottom > top)
 		cmd_sa(a);
-	else if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) > 0)
+	else if (top > middle && middle > bottom)
 	{
 		cmd_sa(a);
 		a = cmd_rra(a);
 	}
-	else if (strcmp(top->content, middle->content) > 0 && strcmp(middle->content, bottom->content) < 0 && strcmp(top->content, bottom->content) > 0)
+	else if (top > middle && bottom > middle && top > bottom)
 		a = cmd_ra(a);
-	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) < 0)
+	else if (middle > top && middle > bottom && bottom > top)
 	{
 		cmd_sa(a);
 		a = cmd_ra(a);
 	}
-	else if (strcmp(top->content, middle->content) < 0 && strcmp(middle->content, bottom->content) > 0 && strcmp(top->content, bottom->content) > 0)
+	else if (middle > top && middle > bottom && top > bottom)
 		a = cmd_rra(a);
 	return (a);
 }

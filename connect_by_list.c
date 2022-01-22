@@ -8,22 +8,23 @@ int	main(int argc, char **argv)
 	t_stack	*tmp;
 	int	i;
 
-	i = 1;
+	i = argc - 1;
 	a = ft_lstnew(NULL);
 	b = ft_lstnew(NULL);
 	start_a = a;
-	while (i < argc)
+	while (i > 0)
 	{
 		tmp = ft_lstnew(argv[i]);
 		tmp->prev = a;
 		a->next = tmp;
 		a = tmp;
-		if ((i + 1) == argc)
+
+		if (i == 1)
 		{
 			a->next = start_a;
 			start_a->prev = a;
 		}
-		i++;
+		i--;
 	}
 	if ((argc - 1) == 0)
 		return (0);
@@ -37,6 +38,6 @@ int	main(int argc, char **argv)
 		a = sort_case_six(a, b);
 	else
 		a = sort_case_over_six(a, b, argc);
-	print_stack(a, b);
+//	print_stack(a, b);
 	return (0);
 }
