@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv)//TODO:重複
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -15,6 +15,11 @@ int	main(int argc, char **argv)
 	while (i > 0)
 	{
 		tmp = ft_lstnew(argv[i]);
+		if (atoi(tmp->content) > INT_MAX || atoi(tmp->content) < INT_MIN)
+		{
+			ft_putendl_fd("Error", STDERR_FILENO);
+			exit(EXIT_FAILURE);
+		}
 		tmp->prev = a;
 		a->next = tmp;
 		a = tmp;
@@ -38,6 +43,6 @@ int	main(int argc, char **argv)
 		a = sort_case_six(a, b);
 	else
 		a = sort_case_over_six(a, b, argc);
-//	print_stack(a, b);
+	print_stack(a, b);
 	return (0);
 }

@@ -4,6 +4,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 #include "string.h"
+#include "limits.h"
+#include "unistd.h"
 #define LOOP_SIZE 7
 
 typedef struct s_stack
@@ -15,6 +17,7 @@ typedef struct s_stack
 
 t_stack	*ft_lstnew(void *content);
 int		ft_lstsize_rev(t_stack *lst);
+void	ft_putendl_fd(char *s, int fd);
 void	cmd_sa(t_stack *a);
 void	cmd_sb(t_stack *b);
 void	cmd_ss(t_stack *a, t_stack *b);

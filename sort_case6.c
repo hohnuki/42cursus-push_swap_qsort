@@ -45,7 +45,10 @@ t_stack	*sort_case_six(t_stack *a, t_stack *b)//TODO:手数を減らす
 	b = b->next;
 	a = pass_smallest_value_to_b(a, b);
 	b = b->next;
-	a = sort_case_three(a);
+	if (ft_lstsize_rev(a) == 2)
+		a = sort_case_two(a);
+	else
+		a = sort_case_three(a);
 	b = sort_case_three(b);
 	b = cmd_rb(b);
 	cmd_sb(b);

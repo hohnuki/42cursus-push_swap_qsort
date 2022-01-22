@@ -9,11 +9,11 @@ void	print_stack(t_stack *a, t_stack *b)
 		printf("a->content reverse = %s \n", (char *)a->content);
 		a = a->prev;
 	}
-	for (int j = 0; j < LOOP_SIZE / 2; j++)
-	{
-		printf("a->content =         %s \n", (char *)a->content);
-		a = a->next;
-	}
+//	for (int j = 0; j < LOOP_SIZE / 2; j++)
+//	{
+//		printf("a->content =         %s \n", (char *)a->content);
+//		a = a->next;
+//	}
 //	printf("-------------------------------------------------------\n");
 //	for (int j = 0; j < LOOP_SIZE; j++)
 //	{
