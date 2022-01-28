@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 t_stack	*sort_case_three(t_stack *a)
 {

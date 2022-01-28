@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static t_stack	*pass_smallest_value_to_b(t_stack *a, t_stack *b)
 {

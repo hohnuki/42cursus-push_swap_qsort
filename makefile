@@ -1,34 +1,33 @@
-CC		= gcc
-
-CFLAGS	= -Wall -Wextra -Werror
-
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 NAME = push_swap
+INCLUDES = includes
+SRCS_PATH = ./srcs/
+LIBFT_PATH = ./libft/
 
-CHECKER = checker
-
-LIBFT = libft/libft.a
-
-SRCS = command_list.c connect_by_list.c list_utils.c print_stack.c \
-		sort_case2.c sort_case3.c sort_case5.c sort_case6.c \
-		sort_case_over6.c print_stack.c
-
+SRCS = $(SRCS_PATH)command_list.c $(SRCS_PATH)connect_by_list.c $(SRCS_PATH)list_utils.c $(SRCS_PATH)print_stack.c \
+		$(SRCS_PATH)sort_case2.c $(SRCS_PATH)sort_case3.c $(SRCS_PATH)sort_case5.c $(SRCS_PATH)sort_case6.c \
+		$(SRCS_PATH)sort_case_over6.c $(SRCS_PATH)utils.c
 OBJS = $(SRCS:.c=.o)
+
+LIBFTMAKE = $(MAKE) -C $(LIBFT_PATH)
+LIBFTFLAG = -L$(LIBFT_PATH) -lft
 
 all : $(NAME)
 
-$(NAME) : $(LIBFT) $(OBJS)
-		$(CC) $(CFLAGS) $^ -o $@
+$(NAME) : $(OBJS)
+		$(LIBFTMAKE)
+		$(CC) $(CFLAGS) $(OBJS) $(LIBFTFLAG) -o $(NAME)
 
-$(LIBFT) :
-		make -C libft
+.c.o :
+		$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
 clean :
-		make clean -C libft
+		$(LIBFTMAKE) clean
 		$(RM) $(OBJS)
-		$(RM) $(OBJS2)
 
 fclean : clean
-		$(RM) $(LIBFT)
-		$(RM) $(NAME)
+		$(LIBFTMAKE) fclean
+		$(RM) $(NAME) $(SRCS_OBJS)
 
 re : fclean all
