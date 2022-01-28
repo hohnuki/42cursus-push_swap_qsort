@@ -6,7 +6,7 @@
 #include "string.h"
 #include "limits.h"
 #include "unistd.h"
-#define LOOP_SIZE 7
+#define LOOP_SIZE 10
 
 typedef struct s_stack
 {

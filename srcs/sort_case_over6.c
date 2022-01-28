@@ -1,41 +1,41 @@
 #include "../includes/push_swap.h"
 
-static char	*get_pivot(t_stack *stack, int argc)
-{
-	char	*pivot;
-	int		half_argc;
-
-	half_argc = argc / 2;
-	while (half_argc > 0)
-	{
-		stack = stack->prev;
-		half_argc--;
-	}
-	pivot = stack->content;
-	return (pivot);
-}
-
-t_stack	*sort_case_over_six(t_stack *a, t_stack *b, int argc)
-{
-	char	*pivot;
-	int		i;
-
-	pivot = get_pivot(a, argc);
-	printf("pivot = %s \n", pivot);
-	i = 0;
-	while (i < argc - 1)
-	{
-		if (atoi(a->content) < atoi(pivot))
-		{
-			a = cmd_pb(a, b);
-			b = b->next;
-		}
-		else
-			a = cmd_ra(a);
-		i++;
-	}
-	return (a);
-}
+//static char	*get_pivot(t_stack *stack, int argc)
+//{
+//	char	*pivot;
+//	int		half_argc;
+//
+//	half_argc = argc / 2;
+//	while (half_argc > 0)
+//	{
+//		stack = stack->prev;
+//		half_argc--;
+//	}
+//	pivot = stack->content;
+//	return (pivot);
+//}
+//
+//t_stack	*sort_case_over_six(t_stack *a, t_stack *b, int argc)
+//{
+//	char	*pivot;
+//	int		i;
+//
+//	pivot = get_pivot(a, argc);
+//	printf("pivot = %s \n", pivot);
+//	i = 0;
+//	while (i < argc - 1)
+//	{
+//		if (atoi(a->content) < atoi(pivot))
+//		{
+//			a = cmd_pb(a, b);
+//			b = b->next;
+//		}
+//		else
+//			a = cmd_ra(a);
+//		i++;
+//	}
+//	return (a);
+//}
 //
 //1 2 3 4 5 6 7 8 9 10
 //

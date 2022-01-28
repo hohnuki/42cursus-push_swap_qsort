@@ -38,8 +38,8 @@ int	main(int argc, char **argv)//TODO:重複
 		sort_case_two(a);
 	else if ((argc - 1) == 3)
 		sort_case_three(a);
-//	else if ((argc - 1) == 5)
-//		sort_case_five(a, b);
+	else if ((argc - 1) == 5)
+		sort_case_five(a, b);
 //	else if ((argc - 1) == 6)
 //		sort_case_six(a, b);
 //	else
