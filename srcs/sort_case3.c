@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-t_stack	*sort_case_three(t_stack *a)
+void	sort_case_three(t_stack *a)
 {
 	int	top;
 	int	middle;
@@ -14,16 +14,15 @@ t_stack	*sort_case_three(t_stack *a)
 	else if (top > middle && middle > bottom)
 	{
 		cmd_sa(a);
-		a = cmd_rra(a);
+		cmd_rra(a);
 	}
 	else if (top > middle && bottom > middle && top > bottom)
-		a = cmd_ra(a);
+		cmd_ra(a);
 	else if (middle > top && middle > bottom && bottom > top)
 	{
 		cmd_sa(a);
-		a = cmd_ra(a);
+		cmd_ra(a);
 	}
 	else if (middle > top && middle > bottom && top > bottom)
-		a = cmd_rra(a);
-	return (a);
+		cmd_rra(a);
 }

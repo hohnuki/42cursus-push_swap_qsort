@@ -3,29 +3,21 @@
 void	cmd_sa(t_stack *a)
 {
 	char	*tmp;
-	char	*tmp_prev;
 
 	printf("sa\n");
 	tmp = a->content;
-	a = a->prev;
-	tmp_prev = a->content;
-	a->content = tmp;
-	a = a->next;
-	a->content = tmp_prev;
+	a->content = (a->prev)->content;
+	(a->prev)->content = tmp;
 }
 
 void	cmd_sb(t_stack *b)
 {
 	char	*tmp;
-	char	*tmp_prev;
 
 	printf("sb\n");
 	tmp = b->content;
-	b = b->prev;
-	tmp_prev = b->content;
-	b->content = tmp;
-	b = b->next;
-	b->content = tmp_prev;
+	b->content = (b->prev)->content;
+	(b->prev)->content = tmp;
 }
 
 void	cmd_ss(t_stack *a, t_stack *b)
@@ -35,46 +27,28 @@ void	cmd_ss(t_stack *a, t_stack *b)
 	cmd_sb(b);
 }
 
-t_stack	*cmd_ra(t_stack *a)
+void	cmd_ra(t_stack *a)
 {
-	char	*tmp_content;
-	t_stack	*free_address;
-	t_stack	*new;
 
 	printf("ra\n");
-	tmp_content = a->content;
-	free_address = a;
-	new = ft_lstnew(tmp_content);
-	(a->prev)->next = a->next;
+	a = a->last_node;
+	a->last_node = a->prev;
 	(a->next)->prev = a->prev;
-	((a->next)->next)->prev = new;
-	new->next = (a->next)->next;
-	(a->next)->next = new;
-	new->prev = (a->next);
-	a = a->prev;
-	free (free_address);
-	return (a);
+	(a->prev)->next = a->next;
+	a->prev = a->next;
+	a->next = (a->next)->next;
+	(a->next)->prev = a;
 }
 
-t_stack	*cmd_rb(t_stack *b)
+void	cmd_rb(t_stack *b)
 {
-	char	*tmp_content;
-	t_stack	*free_address;
-	t_stack	*new;
-
-	printf("rb\n");
-	tmp_content = b->content;
-	free_address = b;
-	new = ft_lstnew(tmp_content);
-	(b->prev)->next = b->next;
+	b = b->last_node;
+	b->last_node = b->prev;
 	(b->next)->prev = b->prev;
-	((b->next)->next)->prev = new;
-	new->next = (b->next)->next;
-	(b->next)->next = new;
-	new->prev = (b->next);
-	b = b->prev;
-	free (free_address);
-	return (b);
+	(b->prev)->next = b->next;
+	b->prev = b->next;
+	b->next = (b->next)->next;
+	(b->next)->prev = b;
 }
 
 void	cmd_rr(t_stack *a, t_stack *b)
@@ -84,46 +58,28 @@ void	cmd_rr(t_stack *a, t_stack *b)
 	cmd_rb(b);
 }
 
-t_stack	*cmd_rra(t_stack *a)
+void	cmd_rra(t_stack *a)
 {
-	char	*tmp_content;
-	t_stack	*free_address;
-	t_stack	*new;
-
 	printf("rra\n");
-	tmp_content = ((a->next)->next)->content;
-	free_address = (a->next)->next;
-	new = ft_lstnew(tmp_content);
-	new->prev = a;
-	new->next = a->next;
-	(a->next)->prev = new;
-	a->next = new;
-	(new->next)->next = ((new->next)->next)->next;
-	((new->next)->next)->prev = new->next;
-	a = new;
-	free (free_address);
-	return (a);
+	a = a->last_node;
+	a->last_node = (a->next)->next;
+	a->next = (a->next)->next;
+	(a->next)->next = a->next;
+	((a->next)->next)->prev = a;
+	(a->prev)->prev = a->next;
+	(a->next)->next = a->prev;
 }
 
-t_stack	*cmd_rrb(t_stack *b)
+void	cmd_rrb(t_stack *b)
 {
-	char	*tmp_content;
-	t_stack	*free_address;
-	t_stack	*new;
-
-	printf("rrb\n");
-	tmp_content = ((b->next)->next)->content;
-	free_address = (b->next)->next;
-	new = ft_lstnew(tmp_content);
-	new->prev = b;
-	new->next = b->next;
-	(b->next)->prev = new;
-	b->next = new;
-	(new->next)->next = ((new->next)->next)->next;
-	((new->next)->next)->prev = new->next;
-	b = new;
-	free (free_address);
-	return (b);
+	printf("rra\n");
+	b = b->last_node;
+	b->last_node = (b->next)->next;
+	b->next = (b->next)->next;
+	(b->next)->next = b->next;
+	((b->next)->next)->prev = b;
+	(b->prev)->prev = b->next;
+	(b->next)->next = b->prev;
 }
 
 t_stack	*cmd_pa(t_stack *a, t_stack *b)
