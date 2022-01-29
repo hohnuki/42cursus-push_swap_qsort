@@ -24,7 +24,7 @@ int	find_smallest_number(t_stack *a)
 	return (smallest_number_index);
 }
 
-void	sort_case_five(t_stack *a, t_stack *b)
+void	sort_case_five(t_stack *a, t_stack *b, t_list_info *list_info)
 {
 	int	list_size;
 	int	smallest_number_index;
@@ -37,13 +37,15 @@ void	sort_case_five(t_stack *a, t_stack *b)
 	if (list_size == smallest_number_index - 1)
 		;
 	else if (list_size == smallest_number_index)
-		cmd_rra(a);
+		cmd_rra(a, list_info);
 	else
 	{
-		while ((list_size - 1) > 0)
+		while (smallest_number_index > 0)
 		{
-			cmd_ra(a);
-			list_size--;
+			cmd_ra(a, list_info);
+			smallest_number_index--;
 		}
 	}
+	a = list_info->a_last_node;
+	print_stack(a, b);
 }
