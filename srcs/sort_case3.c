@@ -1,11 +1,12 @@
 #include "../includes/push_swap.h"
 
-void	sort_case_three(t_stack *a, t_list_info *list_info)
+void	sort_case_three_a(t_stack *a, t_list_info *list_info)
 {
 	int	top;
 	int	middle;
 	int	bottom;
 
+	a = list_info->a_last_node;
 	top = atoi(a->content);
 	middle = atoi((a->prev)->content);
 	bottom = atoi(((a->prev)->prev)->content);

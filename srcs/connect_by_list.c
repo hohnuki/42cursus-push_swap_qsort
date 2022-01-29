@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	list_info->b_last_node = b;
+	b->next = b;
+	b->prev = b;
 	start_a = a;
 	while (i > 0)
 	{
@@ -42,9 +44,9 @@ int	main(int argc, char **argv)
 	if ((argc - 1) == 0)
 		return (0);
 	else if ((argc - 1) == 2)
-		sort_case_two(a, list_info);
+		sort_case_two_a(a, list_info);
 	else if ((argc - 1) == 3)
-		sort_case_three(a, list_info);
+		sort_case_three_a(a, list_info);
 	else if ((argc - 1) == 5)
 		sort_case_five(a, b, list_info);
 //	else if ((argc - 1) == 6)
@@ -52,6 +54,7 @@ int	main(int argc, char **argv)
 //	else
 //		sort_case_over_six(a, b, argc);
 	a = list_info->a_last_node;
+	b = list_info->b_last_node;
 	//print_stack(a, b);
 	return (0);
 }
